@@ -43,6 +43,7 @@ $err_msg = array();
 //========================
 require('personal/info.php');
 
+
 //========================
 //関数
 //========================
@@ -320,7 +321,8 @@ function getBooksDetail($p_id)
     try {
         $dbh = dbConnect();
         // SQL文作成　//FROM:product->p/category->c
-        $sql = 'SELECT p.id ,p.pic, p.comment, p.name, p.author, p.user_id, p.url, p.create_date, p.update_date, c.name AS category FROM product AS p JOIN category AS c WHERE p.id = :p_id AND p.delete_flg = 0 AND c.delete_flg = 0';
+        $sql = 'SELECT p.id , p.pic , p.comment, p.name, p.author, p.category_id, p.url, p.user_id, p.create_date, p.update_date, c.name AS category FROM product AS p LEFT JOIN category AS c ON p.category_id = c.id WHERE p.id = :p_id AND p.delete_flg = 0 AND c.delete_flg = 0';
+        
         debug('$sql：'.print_r($sql, true));
         
         $data = array(':p_id' => $p_id);
@@ -348,14 +350,12 @@ function getBooksTarget($p_id)
     try {
         $dbh = dbConnect();
         // //FROM:target->t/category->c
-        $sql = 'SELECT t.name AS target FROM product AS p JOIN target AS t WHERE p.id = :p_id AND p.delete_flg = 0 AND t.delete_flg = 0';
+        $sql = 'SELECT t.name AS target FROM product AS p JOIN target AS t ON p.target_id = t.id WHERE p.id = :p_id AND p.delete_flg = 0 AND t.delete_flg = 0';
         debug('$sql：'.print_r($sql, true));
         
         $data = array(':p_id' => $p_id);
-        debug('$data'.print_r($data, true));
         
         $stmt = queryPost($dbh, $sql, $data);
-        debug('$stmt'.print_r($stmt, true));
         if ($stmt) {
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } else {
