@@ -43,7 +43,6 @@ $err_msg = array();
 //========================
 require('personal/info.php');
 
-
 //========================
 //関数
 //========================
@@ -373,7 +372,7 @@ function isLike($u_id, $p_id)
     debug('お気に入り情報の確認');
     debug('ユーザーID：'.$u_id);
     debug('商品ID：'.$p_id);
-    try{
+    try {
         $dbh = dbConnect();
         $sql = 'SELECT * FROM `like` WHERE product_id = :p_id AND user_id = :u_id';
         $data = array(':u_id' => $u_id, ':p_id' => $p_id);
@@ -698,7 +697,7 @@ function validBookTitleDup($name, $key1)
     global $err_msg;
     try {
         $dbh = dbConnect();
-        $sql = 'SELECT count(*) FROM product WHERE name = :name　AND delete_flg = 0';
+        $sql = 'SELECT count(*) FROM product WHERE name = :name AND delete_flg = 0';
         $data = array(':name' => $name);
         $stmt = queryPost($dbh, $sql, $data);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
