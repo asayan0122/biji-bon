@@ -6,7 +6,7 @@ debugLogStart();
 
 $p_id = (!empty($_GET['p_id'])) ? $_GET['p_id'] : '';
 $dbFormData = (!empty($p_id)) ? getProduct($_SESSION['user_id'], $p_id) : '';
-// $editかどうかをDataがあるかで確認
+// $editかどうかを確認
 $edit_flg = (empty($dbFormData)) ? false : true;
 $dbCategoryData = getCategory();
 debug('商品ID：'.$p_id);
