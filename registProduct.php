@@ -35,14 +35,14 @@ if (!empty($_POST)) {
         validRequired($name, 'name');
         validMaxLen($name, 'name');
         validBookTitleDup($name, 'name');
-        
+
         validMaxLen($comment, 'comment', 3000);
-   
+
         validRequired($author, 'author');
         validMaxLen($author, 'author');
-        
+
         validRequired($category, 'category_id');
-        
+
         validRequired($target, 'target_id');
 
         validRequired($url, 'url');
