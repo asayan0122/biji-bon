@@ -5,8 +5,8 @@ pageTop('サインアップページ');
 debugLogStart();
 
 if (!empty($_POST)) {
-  debug('START');
-  debug('POST送信');
+    debug('START');
+    debug('POST送信');
 
     $account = $_POST['account'];
     $email = $_POST['email'];
@@ -35,10 +35,10 @@ if (!empty($_POST)) {
         validMinLen($pass_re, 'pass_re');
   
         if (empty($err_msg)) {
-            validMatch($pass, $pass, 'pass_re');
+            validMatch($pass, $pass_re, 'pass_re');
             if (empty($err_msg)) {
-              debug('VC完了');
-              debug('DB接続');
+                debug('VC完了');
+                debug('DB接続');
 
                 try {
                     $dbh = dbConnect();
