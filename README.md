@@ -1,3 +1,6 @@
+herokuで公開してますので、良ければアクセスをお願い致します。
+https://biji-bon.herokuapp.com/
+
 1.トップ画面です（本の画像はサンプルで自作しました）
 <img width="1440" alt="スクリーンショット 2019-11-13 12 50 23" src="https://user-images.githubusercontent.com/53964792/68734434-ab8a3080-061d-11ea-9a21-33d106a6ae88.png">
 
